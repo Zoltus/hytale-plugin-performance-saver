@@ -46,15 +46,15 @@ The plugin is configured via a JSON configuration file. Below are all available 
 #### TPS Adjuster (`Tps`)
 Controls the server's TPS limiting behavior.
 
-| Option                   | Type     | Default | Description                                                     |
-|--------------------------|----------|---------|-----------------------------------------------------------------|
-| `Enabled`                | boolean  | `true`  | Enable/disable TPS limiting                                     |
-| `TpsLimit`               | integer  | `20`    | Maximum TPS when players are online                             |
-| `TpsLimitEmpty`          | integer  | `5`     | TPS limit when no players are online                            |
-| `OnlyWorlds`             | string[] | `[]`    | Restrict TPS adjustment to specific worlds (empty = all worlds) |
-| `InitialDelaySeconds`    | integer  | `30`    | Delay before TPS adjustment starts                              |
-| `CheckIntervalSeconds`   | integer  | `5`     | How often to check/adjust TPS                                   |
-| `EmptyLimitDelaySeconds` | integer  | `300`   | Delay before applying empty server TPS limit                    |
+| Option                   | Type     | Default | Description                                                                                                                |
+|--------------------------|----------|---------|----------------------------------------------------------------------------------------------------------------------------|
+| `Enabled`                | boolean  | `true`  | Enable/disable TPS limiting                                                                                                |
+| `TpsLimit`               | integer  | `20`    | Maximum TPS when players are online                                                                                        |
+| `TpsLimitEmpty`          | integer  | `5`     | TPS limit when no players are online                                                                                       |
+| `OnlyWorlds`             | string[] | `[]`    | Restrict TPS adjustment to specific worlds (empty = all worlds). Use `"__DEFAULT"` to refer to the server's default world. |
+| `InitialDelaySeconds`    | integer  | `30`    | Delay before TPS adjustment starts                                                                                         |
+| `CheckIntervalSeconds`   | integer  | `5`     | How often to check/adjust TPS                                                                                              |
+| `EmptyLimitDelaySeconds` | integer  | `300`   | Delay before applying empty server TPS limit                                                                               |
 
 #### View Radius (`ViewRadius`)
 Controls dynamic view radius adjustment based on resource pressure.
@@ -82,13 +82,13 @@ Monitors JVM garbage collection to detect memory pressure.
 ##### TPS Monitor (`ViewRadius.TpsMonitor`)
 Monitors TPS to detect CPU pressure.
 
-| Option                   | Type     | Default | Description                                                     |
-|--------------------------|----------|---------|-----------------------------------------------------------------|
-| `Enabled`                | boolean  | `true`  | Enable/disable TPS-based pressure detection                     |
-| `TpsWaterMarkHigh`       | double   | `0.75`  | TPS ratio above which view radius can recover                   |
-| `TpsWaterMarkLow`        | double   | `0.6`   | TPS ratio below which view radius should decrease               |
-| `OnlyWorlds`             | string[] | `[]`    | Restrict TPS monitoring to specific worlds (empty = all worlds) |
-| `AdjustmentDelaySeconds` | integer  | `20`    | Delay between TPS-triggered adjustments                         |
+| Option                   | Type     | Default | Description                                                                                                                |
+|--------------------------|----------|---------|----------------------------------------------------------------------------------------------------------------------------|
+| `Enabled`                | boolean  | `true`  | Enable/disable TPS-based pressure detection                                                                                |
+| `TpsWaterMarkHigh`       | double   | `0.75`  | TPS ratio above which view radius can recover                                                                              |
+| `TpsWaterMarkLow`        | double   | `0.6`   | TPS ratio below which view radius should decrease                                                                          |
+| `OnlyWorlds`             | string[] | `[]`    | Restrict TPS monitoring to specific worlds (empty = all worlds). Use `"__DEFAULT"` to refer to the server's default world. |
+| `AdjustmentDelaySeconds` | integer  | `20`    | Delay between TPS-triggered adjustments                                                                                    |
 
 #### Chunk Garbage Collection (`ChunkGarbageCollection`)
 Triggers JVM garbage collection when chunk unloading indicates memory can be freed.
