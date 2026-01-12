@@ -39,7 +39,6 @@ public class PerformanceSaverPlugin extends JavaPlugin {
 
     private TpsAdjuster tpsAdjuster;
 
-
     public PerformanceSaverPlugin(@Nonnull JavaPluginInit init) {
         super(init);
     }

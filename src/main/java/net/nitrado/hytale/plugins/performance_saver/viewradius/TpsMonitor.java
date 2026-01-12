@@ -4,6 +4,7 @@ import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.metrics.metric.HistoricMetric;
 import com.hypixel.hytale.server.core.universe.Universe;
 import com.hypixel.hytale.server.core.universe.world.World;
+import com.hypixel.hytale.server.core.universe.world.commands.world.perf.WorldPerfCommand;
 import net.nitrado.hytale.plugins.performance_saver.config.TpsMonitorConfig;
 
 public class TpsMonitor implements Monitor {
@@ -66,8 +67,16 @@ public class TpsMonitor implements Monitor {
 
     }
 
+    /**
+     * Gets the average World TPS for the shortest measurement time period (default 10s)
+     *
+     * @param world The world
+     * @return The ticks per second
+     */
     protected double getTPS(World world) {
+        final var tickStepNanos = world.getTickStepNanos();
+
         HistoricMetric metrics = world.getBufferedTickLengthMetricSet();
-        return metrics.getAverage(0);
+        return WorldPerfCommand.tpsFromDelta(metrics.getAverage(0), tickStepNanos);
     }
 }
